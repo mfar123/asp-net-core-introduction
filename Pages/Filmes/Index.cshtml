@@ -1,0 +1,99 @@
+@page
+@model FilmesCrud.Pages.Filmes.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@{
+    Layout = "_Layout";
+}
+
+
+<style>
+    th {
+        text-align: center;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Filmes top+</h1>
+
+            <p>
+                <a asp-page="Create" class="btn btn-primary">Adicionar Filme</a>
+            </p>
+                <div class="table-striped">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="text-left">Gêneros: </label>
+                                <select class="form-control" asp-for="FilmePorGenero" asp-items="Model.Generos"><option value="">Todos - Gêneros</option></select>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="text-left"> Título do Filme </label>
+                                <input type="text" class="form-control" name="buscaPorGeneroNome" />
+                            </div>
+                            <br>
+                            <input type="submit" value="Filtrar" class="btn btn-primary" style="width: auto; height: 50px">
+                        </div>
+
+                    </form>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="col-sm-2">
+                                    @Html.DisplayNameFor(model => model.Filmes[0].Titulo)
+                                </th>
+                                <th class="col-sm-2">
+                                    @Html.DisplayNameFor(model => model.Filmes[0].DataLancamento)
+                                </th>
+                                <th class="col-sm-1">
+                                    @Html.DisplayNameFor(model => model.Filmes[0].Preco)
+                                </th>
+                                <th class="col-sm-2">
+                                    @Html.DisplayNameFor(model => model.Filmes[0].Descricao)
+                                </th>
+                                <th class="col-sm-1">
+                                    @Html.DisplayNameFor(model => model.Filmes[0].Genero)
+                                </th>
+                                <th class="col-sm-3">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Filmes)
+                            {
+                                <tr>
+                                    <td class="col-sm-2">
+                                        @Html.DisplayFor(modelItem => item.Titulo)
+                                    </td>
+                                    <td class="col-sm-1">
+                                        @Html.DisplayFor(modelItem => item.DataLancamento)
+                                    </td>
+                                    <td class="col-sm-1">
+                                        @Html.DisplayFor(modelItem => item.Preco)
+                                    </td>
+                                    <td class="col-sm-2">
+                                        @Html.DisplayFor(modelItem => item.Descricao)
+                                    </td>
+                                    <td class="col-sm-1">
+                                        @Html.DisplayFor(modelItem => item.Genero)
+                                    </td>
+                                    <td class="col-sm-3 text-center">
+                                        <a asp-page="./Edit" asp-route-id="@item.FilmeId" class="btn btn-warning ">Edit</a>
+                                        <a asp-page="./Details" asp-route-id="@item.FilmeId"
+                                        class="btn btn-info">Details</a>
+                                        <a asp-page="./Delete" asp-route-id="@item.FilmeId"
+                                        class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+    </div>
+</div>

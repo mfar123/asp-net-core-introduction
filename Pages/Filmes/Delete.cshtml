@@ -1,0 +1,58 @@
+@page
+@model FilmesCrud.Pages.Filmes.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<div class="conteiner">
+    <div class="row">
+
+        <h1>Delete</h1>
+
+
+        <div>
+                    <h3>Deseja realmente excluir o filme?</h3>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Filmes.Titulo)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Filmes.Titulo)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Filmes.DataLancamento)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Filmes.DataLancamento)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Filmes.Preco)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Filmes.Preco)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Filmes.Descricao)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Filmes.Descricao)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Filmes.Genero)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Filmes.Genero)
+                </dd>
+            </dl>
+
+            <form method="post">
+                <input type="hidden" asp-for="Filmes.FilmeId" />
+                <input type="submit" value="Excluir" class="btn btn-danger" />
+                <a asp-page="./Index" class="btn btn-default">Back to List</a>
+            </form>
+        </div>
+    </div>
+</div>
